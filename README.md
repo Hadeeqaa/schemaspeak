@@ -4,7 +4,7 @@ Describe a database schema change in plain English. SchemaSpeak interprets it wi
 
 # Demo
 **Live demo:** http://schemaspeak-env.eba-wzfdnkun.ap-southeast-2.elasticbeanstalk.com
-![SchemaSpeak screenshot](docs/img.png)
+
 
 ## How it works
 
