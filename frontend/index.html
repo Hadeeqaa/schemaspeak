@@ -1,19 +1,57 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>SchemaSpeak</title>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <style>
-        body { font-family: sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; }
-        input { width: 100%; padding: 10px; font-size: 16px; box-sizing: border-box; }
-        button { padding: 10px 20px; margin-top: 10px; font-size: 16px; cursor: pointer; }
-        #status { margin-top: 15px; padding: 10px; border-radius: 4px; }
-        .applied { background: #d4edda; color: #155724; }
-        .rejected { background: #f8d7da; color: #721c24; }
-        #diagram { margin-top: 30px; border: 1px solid #ddd; padding: 20px; border-radius: 4px; }
+        body {
+            font-family: sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .applied {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        #diagram {
+            margin-top: 30px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 4px;
+        }
     </style>
 </head>
+
 <body>
     <h1>SchemaSpeak</h1>
     <p>Describe a schema change in plain English:</p>
@@ -32,7 +70,7 @@
             statusDiv.textContent = 'Processing...';
             statusDiv.className = '';
 
-            const response = await fetch('http://localhost:8080/interpret', {
+            const response = await fetch('http://schemaspeak-env.eba-wzfdnkun.ap-southeast-2.elasticbeanstalk.com/interpret', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ sentence })
@@ -47,7 +85,7 @@
         }
 
         async function renderDiagram() {
-            const response = await fetch('http://localhost:8080/schema');
+            const response = await fetch('http://schemaspeak-env.eba-wzfdnkun.ap-southeast-2.elasticbeanstalk.com/schema');
             const mermaidText = await response.text();
 
             const diagramDiv = document.getElementById('diagram');
@@ -60,4 +98,5 @@
         renderDiagram();
     </script>
 </body>
+
 </html>
