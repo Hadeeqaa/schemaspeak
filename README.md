@@ -2,7 +2,9 @@
 
 Describe a database schema change in plain English. SchemaSpeak interprets it with an LLM, validates it against a safety whitelist, applies it to a real MySQL database, and renders a live ER diagram — regenerated directly from the database's actual structure every time.
 
+# Demo
 **Live demo:** http://schemaspeak-env.eba-wzfdnkun.ap-southeast-2.elasticbeanstalk.com
+![SchemaSpeak screenshot](docs/img.png)
 
 ## How it works
 
