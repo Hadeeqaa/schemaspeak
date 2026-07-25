@@ -8,7 +8,7 @@ Describe a database schema change in plain English. SchemaSpeak interprets it wi
 
 ## How it works
 
-The core idea: the diagram is never based on "what we think we did" — it's rebuilt from the database's real, current structure on every request. If a sentence doesn't produce a valid, safe schema change, nothing is executed, and the diagram simply doesn't move. This makes the visual output an inherent proof of correctness rather than something that needs separate validation logic to display.
+The core idea: the diagram is never based on "what we think we did".It's rebuilt from the database's real, current structure on every request. If a sentence doesn't produce a valid, safe schema change, nothing is executed, and the diagram simply doesn't move. This makes the visual output an inherent proof of correctness rather than something that needs separate validation logic to display.
 
 **Pipeline:**
 1. **Interpretation** — the sentence is sent to Google's Gemini API with the current schema as context, and translated into a proposed SQL DDL statement (or `NONE` if the sentence doesn't describe a valid schema change).
@@ -41,6 +41,6 @@ The core idea: the diagram is never based on "what we think we did" — it's reb
 
 ## Architecture notes
 
-- Validation happens *before* execution — nothing touches the database until a statement passes the safety whitelist.
+- Validation happens *before* execution. Nothing touches the database until a statement passes the safety whitelist.
 - Execution is wrapped in a transaction, so a failed statement can't leave the schema in a partially-modified state.
 - Introspection always runs after every request, independent of whether execution occurred, which is what guarantees the diagram accurately reflects reality rather than an assumed outcome.
