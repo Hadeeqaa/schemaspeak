@@ -70,7 +70,7 @@
             statusDiv.textContent = 'Processing...';
             statusDiv.className = '';
 
-            const response = await fetch('/interpret', { {
+            const response = await fetch('http://schemaspeak-env.eba-wzfdnkun.ap-southeast-2.elasticbeanstalk.com/interpret', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ sentence })
@@ -85,7 +85,7 @@
         }
 
         async function renderDiagram() {
-            const response = await fetch('/schema');
+            const response = await fetch('http://schemaspeak-env.eba-wzfdnkun.ap-southeast-2.elasticbeanstalk.com/schema');
             const mermaidText = await response.text();
 
             const diagramDiv = document.getElementById('diagram');
